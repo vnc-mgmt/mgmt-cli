@@ -23,6 +23,6 @@ while True:
     cmd = input('VNC Manager: ')
     if not cmd == '':
         s.send(cmd.encode())
-        print(s.recv(1024).decode('utf-8'))
+        print(s.recv(2048).decode('utf-8'))
     if cmd == 'exit':
         break
