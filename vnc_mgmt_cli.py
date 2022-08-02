@@ -1,5 +1,6 @@
 import socket
 import getpass
+import cli_mgmt
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print('Connecting to server...')
@@ -19,10 +20,6 @@ while invalid_credentials:
     else:
         print(resp)
         print('Authentication Failed, try again')
-while True:
-    cmd = input('VNC Manager: ')
-    if not cmd == '':
-        s.send(cmd.encode())
-        print(s.recv(2048).decode('utf-8'))
-    if cmd == 'exit':
-        break
+
+cli = cli_mgmt.VNCCLI(s)
+cli.cmdloop()
