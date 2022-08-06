@@ -5,7 +5,7 @@ import cli_mgmt
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 print('Connecting to server...')
 server_ip_f = open('server_ip.conf')
-server_ip = server_ip_f.read()
+server_ip = server_ip_f.read().replace('\n', '')
 server_ip_f.close()
 s.connect((server_ip, 4582))
 invalid_credentials = True
